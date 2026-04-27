@@ -1,0 +1,43 @@
+[
+    {
+        "video_id": "2755289703",
+        "stream_id": "316962587736",
+        "game_name": "Music",
+        "started_at": "2026-04-23T18:47:02Z",
+        "duration": "7h19m47s",
+        "title": "Free lessons, Bajiru Birthday Community Project, U-San wants me to be virgil?",
+        "child_video_id": null,
+        "parent_video_id": null,
+        "video_file": "2026-04-23_2755289703_music.mp4"
+    },
+    {
+        "video_id": "2754507268",
+        "stream_id": "316420150135",
+        "game_name": "Music",
+        "started_at": "2026-04-22T18:56:40Z",
+        "duration": "5h28m38s",
+        "title": "Free Lesson, then Gawr Gura",
+        "child_video_id": null,
+        "parent_video_id": null
+    },
+    {
+        "video_id": "2753631087",
+        "stream_id": "316946624088",
+        "game_name": "Music",
+        "started_at": "2026-04-21T17:00:20Z",
+        "duration": "8h46m38s",
+        "title": "Free Lesson, then Gawr Gura",
+        "child_video_id": null,
+        "parent_video_id": null
+    },
+    {
+        "video_id": "2752924140",
+        "stream_id": "316939428696",
+        "game_name": "Music",
+        "started_at": "2026-04-20T18:47:32Z",
+        "duration": "5h43m59s",
+        "title": "Free Lesson, Thanking every Twitch Subscriber + Prep work for Daryl + Baji Collab",
+        "child_video_id": null,
+        "parent_video_id": null
+    }
+]

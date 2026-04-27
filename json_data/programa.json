@@ -1,0 +1,7 @@
+{
+    "client_id": "client_id",
+    "client_secret":"secret_here",
+    "broadcaster_id":908908905,
+    "twitch_scopes": "channel:manage:broadcast",
+    "redirect_uri": "http://localhost:8081/auth/twitch/callback"
+}
