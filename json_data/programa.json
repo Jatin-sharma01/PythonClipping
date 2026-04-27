@@ -1,7 +1,7 @@
 {
-    "client_id": "client_id",
-    "client_secret":"secret_here",
+    "client_id": "client_id here",
+    "client_secret":"client_secret here",
     "broadcaster_id":908908905,
-    "twitch_scopes": "channel:manage:broadcast",
+    "twitch_scopes": "channel:manage:broadcast , user:read:subscriptions",
     "redirect_uri": "http://localhost:8081/auth/twitch/callback"
 }

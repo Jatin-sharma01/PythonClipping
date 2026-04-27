@@ -1,6 +1,7 @@
 import json
 import os
 import datetime
+import threading
 
 from ffmpegFunctions import create_video_clip_cut_cortar_clips_page, create_video_clip_cut_tiktok_cortar_clips_page , create_video_clip_cut_tiktok, create_video_clip_cut
 
@@ -460,8 +461,8 @@ def get_marker_in_json(file_name, marker_id):
     return False  # V
 
 
-def getClipsToCutFromTreeview(treeview , treeview2 , tk):
-    
+def _process_clips_background(treeview, treeview2, tk):
+    """Background worker function that processes clips without freezing the UI."""
     #print(files)
     # Filter the downloaded videos based on the provided video IDs
     id_marcador = 0
@@ -607,3 +608,15 @@ def getClipsToCutFromTreeview(treeview , treeview2 , tk):
             treeview2.insert("", tk.END, values=(safe_path,))
 
     return
+
+
+def getClipsToCutFromTreeview(treeview, treeview2, tk):
+    """Wrapper function that runs clip processing in a background thread."""
+    # Show status message
+    print("Starting clip cutting in background thread...")
+    
+    # Run the processing in a daemon thread so it doesn't block the UI
+    worker_thread = threading.Thread(target=_process_clips_background, args=(treeview, treeview2, tk), daemon=True)
+    worker_thread.start()
+    
+    print("Clip cutting started. UI remains responsive.")

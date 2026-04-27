@@ -44,6 +44,7 @@ datos = get_app_params(script_dir,"programa.json")
 CLIENT_ID = datos["client_id"]
 CLIENT_SECRET = datos["client_secret"]
 REDIRECT_URI = datos["redirect_uri"]
+BROADCASTER_ID = datos.get("broadcaster_id")  # Read from programa.json with fallback
 
 access_token = None
 refresh_token = None
@@ -144,43 +145,6 @@ def get_stream_markers(access_token, video_id, user_id, limit=5):
         markers = markers_data.get('data', [])
         if markers:
             print(f"Found {len(markers)} markers for video ID {video_id}:")
-            for marker in markers:
-                # Extract marker details
-                marker_id = marker.get('id', 'N/A')
-                created_at = marker.get('created_at', 'N/A')
-                description = marker.get('description', 'N/A')
-                #print(f"Marker ID: {marker_id}, Created at: {created_at}, Description: {description}")
-        else:
-            print("No markers found for this video.")
-    else:
-        print(f"Error fetching stream markers: {response.status_code}, {response.text}")
-
-
-def get_stream_subs(access_token, subscriber, user_id, limit=5):
-    url = f"https://api.twitch.tv/helix/subscriptions"
-
-    params = {
-        'broadcaster_id': subscriber,  # Specify the video ID
-        'first': limit,        # Limit the number of markers returned
-    }
-
-    headers = {
-        "Authorization": f"Bearer {access_token}",
-        "Client-ID": CLIENT_ID,  # Replace with your actual Client-ID
-    }
-
-    # Make the GET request
-    response = requests.get(url, headers=headers, params=params)
-
-    if response.status_code == 200:
-        markers_data = response.json()
-
-        # Print the full response to debug
-        # print("Full markers response:", markers_data)
-
-        markers = markers_data.get('data', [])
-        if markers:
-            print(f"Found {len(markers)} markers for user ID {marker.get('user_name', 'Unknown User')}:")
             for marker in markers:
                 # Extract marker details
                 marker_id = marker.get('id', 'N/A')
@@ -774,12 +738,6 @@ def getNextVideos(broadcaster_id, ultimos_directos):
     # Keep only video IDs that have markers.
     videoIds = [videoId for videoId in videoIds if hasVideoGotMarkers(videoId)]
 
-    
-
-    subs = get_stream_subs(access_token, broadcaster_id, broadcaster_id, 20)
-
-    broadcaster_id = 908908905
-
     # # get all the videos we have already clipped got markers for
     # downloadedVideos = getClippedVideos("json_data" ) # we can pass the videoIds to check only those that we are interested in
 
@@ -813,8 +771,8 @@ def run_main():
         status_label.config(text="No access token! Authenticate first.", fg="red")
         return
     
-    #get from env variables
-    broadcaster_id = 908908905; #get_user_info(access_token, broadcaster_username)
+    # Use broadcaster_id from programa.json
+    broadcaster_id = BROADCASTER_ID 
     #print(f"Got broadcaster ID: {broadcaster_id}")
 
     if broadcaster_id:
