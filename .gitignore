@@ -9,8 +9,7 @@ _stream_files/*.*
 _stream_files/*/*.*
 _stream_files/*/*/*.*
 _game_marker_files/*.*
-json_data/programa_sample.*
-json_data/programa.json
+json_data/*.*
 clips/*/*/*.mp4
 install.bat
 
@@ -126,3 +125,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
