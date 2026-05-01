@@ -868,35 +868,9 @@ def create_individual_video_clip_for_tiktok(input_file_name,output_file_name, ga
     # '-i', logo1_file_path,  # First logo input
     # '-i', logo2_file_path,  # Second logo input
     '-t', str(duration),
-    # '-filter_complex',
-    # (
-    #     # f"[0:v]{game_crop}[game];"
-    #     # f"[0:v]{camera_crop},format=rgba[cam];"  # Ensure the camera is in rgba format for transparency
-        
-    #     # # Create a larger circular alpha mask (Increased circle size)
-    #     # f"[cam]split[cam][mask];"
-    #     # f"[mask]geq='if(lt(sqrt((X-W/2)*(X-W/2)+(Y-H/2)*(Y-H/2)),W/2),255,0)'[masked];"  # Increased the radius to W/2
-        
-    #     # # Apply the mask to the camera feed
-    #     # f"[cam][masked]alphamerge[masked_camera];"
-        
-    #     # # Combine the game and masked camera
-    #     # f"[game][masked_camera]overlay={overlay_position}[base];"
-        
-    #     # # Scale logos
-    #     # f"[1:v]scale=30:30[logo1_scaled];"
-    #     # f"[2:v]scale=29:29[logo2_scaled];"
-        
-    #     # # Position logos
-    #     # f"[base][logo1_scaled]overlay=615:H-h-1540[logo1];"
-    #     # f"[logo1][logo2_scaled]overlay=1020:H-h-1540[v];"
-        
-    #     # # Add text overlay
-    #     # f"[v]drawtext=fontfile='C\\:/Windows/Fonts/calibrib.ttf':text='WWW.TWITCH.TV/MDESITO':fontcolor=purple:fontsize=32:"
-    #     # f"box=1:boxcolor=white@0.5:x=W-tw-60:y=350:shadowcolor=white:shadowx=2:shadowy=2[v]"
-    # ),
-    # '-map', '[v]',
-    # '-map', '0:a',
+    '-filter_complex', f"[0:v]{game_crop}[v]",
+    '-map', '[v]',
+    '-map', '0:a',
     '-c:v', 'libx264',  # H.264 encoding for video
     '-preset', 'fast',
     '-crf', '23',
@@ -1106,35 +1080,9 @@ def create_video_clip_cut_tiktok(input_file_name,output_file_name, start_seconds
         # '-i', logo1_file_path,  # First logo input
         # '-i', logo2_file_path,  # Second logo input
         '-t', str(duration),
-        # '-filter_complex',
-        # (
-        #     f"[0:v]{game_crop}[game];"
-        #     f"[0:v]{camera_crop},format=rgba[cam];"  # Ensure the camera is in rgba format for transparency
-            
-        #     # Create a larger circular alpha mask (Increased circle size)
-        #     f"[cam]split[cam][mask];"
-        #     f"[mask]geq='if(lt(sqrt((X-W/2)*(X-W/2)+(Y-H/2)*(Y-H/2)),W/2),255,0)'[masked];"  # Increased the radius to W/2
-            
-        #     # Apply the mask to the camera feed
-        #     f"[cam][masked]alphamerge[masked_camera];"
-            
-        #     # Combine the game and masked camera
-        #     f"[game][masked_camera]overlay={overlay_position}[base];"
-            
-        #     # Scale logos
-        #     f"[1:v]scale=30:30[logo1_scaled];"
-        #     f"[2:v]scale=29:29[logo2_scaled];"
-            
-        #     # Position logos
-        #     f"[base][logo1_scaled]overlay=615:H-h-1540[logo1];"
-        #     f"[logo1][logo2_scaled]overlay=1020:H-h-1540[v];"
-            
-        #     # Add text overlay
-        #     f"[v]drawtext=fontfile='C\\:/Windows/Fonts/calibrib.ttf':text='WWW.TWITCH.TV/MDESITO':fontcolor=purple:fontsize=32:"
-        #     f"box=1:boxcolor=white@0.5:x=W-tw-60:y=350:shadowcolor=white:shadowx=2:shadowy=2[v]"
-        # ),
-        # '-map', '[v]',
-        # '-map', '0:a',
+        '-filter_complex', f"[0:v]{game_crop}[v]",
+        '-map', '[v]',
+        '-map', '0:a',
         '-c:v', 'libx264',  # Re-encode to maintain sync
         '-preset', 'fast',
         '-crf', '23',
@@ -1211,35 +1159,9 @@ def create_video_clip_cut_tiktok_cortar_clips_page(input_file_name,output_file_n
         # '-i', logo1_file_path,  # First logo input
         # '-i', logo2_file_path,  # Second logo input
         '-t', str(duration),
-        # '-filter_complex',
-        # (
-        #     f"[0:v]{game_crop}[game];"
-        #     f"[0:v]{camera_crop},format=rgba[cam];"  # Ensure the camera is in rgba format for transparency
-            
-        #     # Create a larger circular alpha mask (Increased circle size)
-        #     f"[cam]split[cam][mask];"
-        #     f"[mask]geq='if(lt(sqrt((X-W/2)*(X-W/2)+(Y-H/2)*(Y-H/2)),W/2),255,0)'[masked];"  # Increased the radius to W/2
-            
-        #     # Apply the mask to the camera feed
-        #     f"[cam][masked]alphamerge[masked_camera];"
-            
-        #     # Combine the game and masked camera
-        #     f"[game][masked_camera]overlay={overlay_position}[base];"
-            
-        #     # Scale logos
-        #     f"[1:v]scale=30:30[logo1_scaled];"
-        #     f"[2:v]scale=29:29[logo2_scaled];"
-            
-        #     # Position logos
-        #     f"[base][logo1_scaled]overlay=615:H-h-1540[logo1];"
-        #     f"[logo1][logo2_scaled]overlay=1020:H-h-1540[v];"
-            
-        #     # Add text overlay
-        #     f"[v]drawtext=fontfile='C\\:/Windows/Fonts/calibrib.ttf':text='WWW.TWITCH.TV/MDESITO':fontcolor=purple:fontsize=32:"
-        #     f"box=1:boxcolor=white@0.5:x=W-tw-60:y=350:shadowcolor=white:shadowx=2:shadowy=2[v]"
-        # ),
-        # '-map', '[v]',
-        # '-map', '0:a',
+        '-filter_complex', f"[0:v]{game_crop}[v]",
+        '-map', '[v]',
+        '-map', '0:a',
         '-c:v', 'libx264',  # Re-encode to maintain sync
         '-preset', 'fast',
         '-crf', '23',
